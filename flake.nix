@@ -11,7 +11,7 @@
     }:
     {
       nixosConfigurations = {
-        homelab = nixpkgs.lib.nixosSystem {
+        lab = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./hosts/aws.nix
@@ -22,12 +22,12 @@
       };
 
       deploy.nodes = {
-        homelab = {
-          hostname = "homelab";
+        lab = {
+          hostname = "lab";
           profiles.system = {
             user = "root";
             sshUser = "root";
-            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.homelab;
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.lab;
           };
 
           remoteBuild = false;
