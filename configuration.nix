@@ -11,7 +11,7 @@
   };
 
   environment.systemPackages = map lib.lowPrio [
-    pkgs.hello
+    pkgs.neovim
   ];
 
   users.users.root.openssh.authorizedKeys.keys = [
