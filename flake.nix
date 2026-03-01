@@ -16,6 +16,7 @@
           modules = [
             ./hosts/aws.nix
             ./configuration.nix
+            ./modules/k3s
           ];
         };
       };
