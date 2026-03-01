@@ -9,7 +9,5 @@
   ];
   services.k3s = {
     enable = true;
-
-    nodeName = "cloudlab";
   };
 }
