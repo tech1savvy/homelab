@@ -29,6 +29,7 @@
       };
       # Monitoring
       "kube-prometheus-stack" = {
+        enable = false;
         name = "kube-prometheus-stack";
         repo = "https://prometheus-community.github.io/helm-charts";
         version = "82.4.3";
