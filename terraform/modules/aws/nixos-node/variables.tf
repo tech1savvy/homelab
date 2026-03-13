@@ -3,8 +3,8 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "subnet_id" {
-  description = "The subnet ID"
+variable "network_interface_id" {
+  description = "The ID of the pre-created network interface to attach"
   type        = string
 }
 

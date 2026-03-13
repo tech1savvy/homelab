@@ -9,14 +9,9 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "subnet_id" {
-  description = "The subnet ID where the instance will be created"
+variable "network_interface_id" {
+  description = "The ID of the pre-created network interface to attach"
   type        = string
-}
-
-variable "security_group_ids" {
-  description = "The security group IDs to associate with the instance"
-  type        = list(string)
 }
 
 variable "key_name" {
@@ -39,10 +34,4 @@ variable "root_volume_size" {
   description = "The size of the root volume in GB"
   type        = number
   default     = 8
-}
-
-variable "associate_public_ip" {
-  description = "Whether to associate a public IP address with the instance"
-  type        = bool
-  default     = true
 }

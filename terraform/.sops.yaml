@@ -1,0 +1,11 @@
+keys:
+  - &primary age1vpmza6twjxadxdghtuxgh9u3d9662s5qsfmf6fm6yljhwypusuuq9keuyz
+creation_rules:
+  - path_regex: secrets\.terraform\.json
+    key_groups:
+      - age:
+          - *primary
+  - path_regex: identifiers\.terraform\.json
+    key_groups:
+      - age:
+          - *primary
