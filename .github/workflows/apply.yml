@@ -8,6 +8,10 @@ on:
       - "**/*.tf"
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   apply:
     runs-on: ubuntu-latest
