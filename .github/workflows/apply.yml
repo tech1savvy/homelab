@@ -19,13 +19,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Configure AWS Credentials (S3)
-        uses: aws-actions/configure-aws-credentials@v6
-        with:
-          role-to-assume: arn:aws:iam::461278471397:role/github-terraform-s3
-          aws-region: ap-south-1
-
-      - name: Configure AWS Credentials (EC2)
+      - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: arn:aws:iam::461278471397:role/github-terraform-deploy
