@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "**/*.tf"
+      - ".github/workflows/apply.yml"
   workflow_dispatch:
 
 permissions:
