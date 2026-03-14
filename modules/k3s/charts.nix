@@ -3,7 +3,7 @@
     autoDeployCharts = {
       # Cert Manager
       "cert-manager" = {
-        enable = true;
+        enable = false;
         name = "cert-manager";
         repo = "https://charts.jetstack.io";
         version = "v1.19.4";
@@ -17,7 +17,7 @@
       };
       # Rancher
       "rancher" = {
-        enable = true;
+        enable = false;
         name = "rancher";
         repo = "https://releases.rancher.com/server-charts/stable";
         version = "v2.13.3";
