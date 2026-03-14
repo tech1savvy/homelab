@@ -3,6 +3,10 @@ name: Terraform Validation
 on:
   push:
     branches: [main]
+    paths:
+      - "**/*.tf"
+      - "terrafrom/*.json"
+      - ".github/workflows/validate.yml"
   pull_request:
     branches: [main]
 
