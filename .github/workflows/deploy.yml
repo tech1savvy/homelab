@@ -33,5 +33,11 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan lab.tech1savvy.me >> ~/.ssh/known_hosts
 
+      - name: Copy age key to server
+        run: |
+          echo "${{ secrets.SOPS_AGE_KEY }}" > /tmp/age.key
+          ssh -o StrictHostKeyChecking=no root@lab.tech1savvy.me "mkdir -p /var/lib/sops && cat > /var/lib/sops/age.key" < /tmp/age.key
+          rm /tmp/age.key
+
       - name: Deploy NixOS
         run: deploy .#lab --hostname lab.tech1savvy.me

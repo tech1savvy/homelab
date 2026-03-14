@@ -14,6 +14,7 @@
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
+    age.keyFile = "/var/lib/sops/age.key";
 
     secrets.key-sensei-jwt-secret = { };
 
