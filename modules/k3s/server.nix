@@ -8,11 +8,5 @@
     role =
       # By default it also runs workloads as an agent.
       "server";
-    settings = {
-      tls-san = [
-        "lab.tech1savvy.me"
-        "lab"
-      ];
-    };
   };
 }
