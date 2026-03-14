@@ -22,7 +22,9 @@
             ./hosts/aws.nix
             ./configuration.nix
             ./modules/k3s
+
             sops-nix.nixosModules.sops
+            ./modules/sops.nix
           ];
         };
       };

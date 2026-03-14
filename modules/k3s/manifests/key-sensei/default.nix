@@ -1,4 +1,8 @@
 {
+  imports = [
+    ./secrets.nix
+  ];
+
   services.k3s.manifests = {
     key-sensei-namespace = {
       enable = true;
