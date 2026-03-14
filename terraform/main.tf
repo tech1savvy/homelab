@@ -38,6 +38,14 @@ module "node_sg" {
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
     },
+    # K3s API
+    {
+      from_port        = 6443
+      to_port          = 6443
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+    },
   ]
 }
 
