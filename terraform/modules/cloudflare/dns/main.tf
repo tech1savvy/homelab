@@ -25,7 +25,7 @@ resource "cloudflare_record" "root" {
   content = var.lab
   type    = "A"
   ttl     = 1 # Auto TTL when proxied
-  proxied = true
+  proxied = false
 }
 
 # -----------------------------------------------------------------------------
@@ -38,5 +38,5 @@ resource "cloudflare_record" "wildcard" {
   content = var.lab
   type    = "A"
   ttl     = 1
-  proxied = true
+  proxied = false
 }
