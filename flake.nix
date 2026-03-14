@@ -2,12 +2,17 @@
   description = "Remotely Managed, and Declarative NixOS Homelab Server";
 
   inputs.deploy-rs.url = "github:serokell/deploy-rs";
+  inputs.sops-nix = {
+    url = "github:Mic92/sops-nix";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs =
     {
       self,
       nixpkgs,
       deploy-rs,
+      sops-nix,
     }:
     {
       nixosConfigurations = {
@@ -17,6 +22,7 @@
             ./hosts/aws.nix
             ./configuration.nix
             ./modules/k3s
+            sops-nix.nixosModules.sops
           ];
         };
       };

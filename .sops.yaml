@@ -1,0 +1,7 @@
+keys:
+  - &primary age1vpmza6twjxadxdghtuxgh9u3d9662s5qsfmf6fm6yljhwypusuuq9keuyz
+creation_rules:
+  - path_regex: modules/k3s/secrets\.yaml
+    key_groups:
+      - age:
+          - *primary

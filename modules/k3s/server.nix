@@ -1,7 +1,7 @@
 {
   imports = [
     ./charts.nix
-    # ./manifests
+    ./manifests
   ];
   services.k3s = {
     nodeName = "lab";

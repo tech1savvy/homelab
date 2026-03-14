@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: key-sensei-server
+  namespace: key-sensei
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: key-sensei-server
+  template:
+    metadata:
+      labels:
+        app: key-sensei-server
+    spec:
+      containers:
+        - name: server
+          image: devakay/key-sensei-server:latest
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: key-sensei-config
+            - secretRef:
+                name: key-sensei-secret
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /api
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 5

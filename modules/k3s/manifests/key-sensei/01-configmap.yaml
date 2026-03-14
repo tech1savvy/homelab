@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: key-sensei-config
+  namespace: key-sensei
+data:
+  PORT: "8000"
+  MONGODB_URI: "mongodb://mongodb:27017/key-sensei"
+  NODE_ENV: "production"
+  CLIENT_URL: "http://localhost:8080"
