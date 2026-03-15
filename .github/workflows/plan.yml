@@ -1,0 +1,57 @@
+name: Terraform Plan
+
+on:
+  pull_request:
+    paths:
+      - '**.tf'
+      - '**.tfvars'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform
+
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::461278471397:role/github-terraform-deploy
+          aws-region: ap-south-1
+
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: "~> 1.14"
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Write SSH public key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/id_ed25519.pub
+
+      - name: Terraform Plan
+        env:
+          SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+        run: terraform plan -no-color -out=tfplan.binary
+
+      - name: Convert plan to JSON
+        run: terraform show -json tfplan.binary > tfplan.json
+
+      - name: Run OpenInfraQuote
+        uses: terrateamio/openinfraquote-action@v1
+        with:
+          plan-path: terraform/tfplan.json
+          comment-on-pr: true
