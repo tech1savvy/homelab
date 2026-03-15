@@ -58,6 +58,7 @@ module "static_identity" {
 
 module "nixos_node" {
   source               = "./modules/aws/nixos-node"
+  instance_type        = "t3.micro"
   vpc_id               = module.network.vpc_id
   network_interface_id = module.static_identity.id
   node_name            = "nixos-native-node"
