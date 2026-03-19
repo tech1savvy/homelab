@@ -51,13 +51,14 @@ module "node_sg" {
 
 module "nixos_node" {
   source                 = "./modules/aws/nixos-node"
-  instance_type          = "t3.small"
+  instance_type          = "t4g.small"
   vpc_id                 = module.network.vpc_id
   subnet_id              = module.network.public_subnet_id
   vpc_security_group_ids = [module.node_sg.security_group_id]
   node_name              = "nixos-native-node"
   instance_state         = local.identifiers.node_state
   public_key             = local.public_key
+  architecture           = "arm64"
 }
 
 module "dns" {
