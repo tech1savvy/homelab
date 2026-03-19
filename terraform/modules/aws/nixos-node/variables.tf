@@ -3,9 +3,14 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "network_interface_id" {
-  description = "The ID of the pre-created network interface to attach"
+variable "subnet_id" {
+  description = "The subnet ID to launch the instance in"
   type        = string
+}
+
+variable "vpc_security_group_ids" {
+  description = "List of security group IDs to associate with the instance"
+  type        = list(string)
 }
 
 variable "node_name" {

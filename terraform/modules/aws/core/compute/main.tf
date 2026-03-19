@@ -1,12 +1,9 @@
 resource "aws_instance" "main" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  key_name      = var.key_name
-
-  network_interface {
-    network_interface_id = var.network_interface_id
-    device_index         = 0
-  }
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  subnet_id              = var.subnet_id
+  vpc_security_group_ids = var.vpc_security_group_ids
 
   root_block_device {
     volume_size = var.root_volume_size

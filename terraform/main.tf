@@ -49,21 +49,15 @@ module "node_sg" {
   ]
 }
 
-module "static_identity" {
-  source             = "./modules/aws/core/network_interface"
-  subnet_id          = module.network.public_subnet_id
-  security_group_ids = [module.node_sg.security_group_id]
-  interface_name     = "nixos-stable-ip"
-}
-
 module "nixos_node" {
-  source               = "./modules/aws/nixos-node"
-  instance_type        = "t3.small"
-  vpc_id               = module.network.vpc_id
-  network_interface_id = module.static_identity.id
-  node_name            = "nixos-native-node"
-  instance_state       = local.identifiers.node_state
-  public_key           = local.public_key
+  source                 = "./modules/aws/nixos-node"
+  instance_type          = "t3.small"
+  vpc_id                 = module.network.vpc_id
+  subnet_id              = module.network.public_subnet_id
+  vpc_security_group_ids = [module.node_sg.security_group_id]
+  node_name              = "nixos-native-node"
+  instance_state         = local.identifiers.node_state
+  public_key             = local.public_key
 }
 
 module "dns" {

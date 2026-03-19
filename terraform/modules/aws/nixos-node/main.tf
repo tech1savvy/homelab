@@ -19,12 +19,13 @@ module "key" {
 }
 
 module "ec2" {
-  source               = "../core/compute"
-  ami_id               = data.aws_ami.nixos.id
-  instance_type        = var.instance_type
-  instance_state       = var.instance_state
-  network_interface_id = var.network_interface_id
-  key_name             = module.key.key_name
-  instance_name        = var.node_name
-  root_volume_size     = var.root_volume_size
+  source                 = "../core/compute"
+  ami_id                 = data.aws_ami.nixos.id
+  instance_type          = var.instance_type
+  instance_state         = var.instance_state
+  subnet_id              = var.subnet_id
+  vpc_security_group_ids = var.vpc_security_group_ids
+  key_name               = module.key.key_name
+  instance_name          = var.node_name
+  root_volume_size       = var.root_volume_size
 }
