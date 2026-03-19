@@ -12,6 +12,7 @@
 
   environment.systemPackages = map lib.lowPrio [
     pkgs.neovim
+    pkgs.k9s
   ];
 
   users.users.root.openssh.authorizedKeys.keys = [
