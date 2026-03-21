@@ -8,5 +8,6 @@
     role =
       # By default it also runs workloads as an agent.
       "server";
+    extraFlags = [ "--tls-san=lab.tech1savvy.me" ];
   };
 }
