@@ -4,7 +4,7 @@ metadata:
   name: key-sensei-server
   namespace: key-sensei
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: key-sensei-server
@@ -25,10 +25,10 @@ spec:
                 name: key-sensei-secret
           resources:
             requests:
-              memory: "256Mi"
+              memory: "128Mi"
               cpu: "100m"
             limits:
-              memory: "512Mi"
+              memory: "256Mi"
               cpu: "500m"
           livenessProbe:
             httpGet:
