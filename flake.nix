@@ -38,7 +38,7 @@
             path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.lab;
           };
 
-          remoteBuild = true;
+          remoteBuild = false;
         };
       };
 
