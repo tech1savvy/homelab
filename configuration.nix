@@ -15,12 +15,12 @@
     pkgs.k9s
   ];
 
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 2 * 1024;
-    }
-  ];
+  # swapDevices = [
+  #   {
+  #     device = "/var/lib/swapfile";
+  #     size = 2 * 1024;
+  #   }
+  # ];
 
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPY5PE/6LzFDNE6omKBo+nfl/XWAqeq3GcF/3Er1kxMY"
