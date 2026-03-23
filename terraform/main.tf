@@ -59,6 +59,7 @@ module "nixos_node" {
   instance_state         = local.identifiers.node_state
   public_key             = local.public_key
   architecture           = "arm64"
+  root_volume_size       = 30
 }
 
 module "dns" {
