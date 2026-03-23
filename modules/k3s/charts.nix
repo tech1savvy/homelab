@@ -67,8 +67,20 @@
             };
 
             config = {
-              route.receiver = "email-notifications";
-              receiver = [
+              route = {
+                receiver = "email-notifications";
+                group_by = [ "namespace" ];
+                group_wait = "30s";
+                group_interval = "5m";
+                repeat_interval = "12h";
+                routes = [
+                  {
+                    receiver = "null";
+                    matchers = [ "alertname = \"Watchdog\"" ];
+                  }
+                ];
+              };
+              receivers = [
                 { name = "null"; }
                 {
                   name = "email-notifications";
@@ -79,6 +91,7 @@
                       from = "amankumar010604@gmail.com";
                       auth_username = "amankumar010604@gmail.com";
                       auth_password_from_secret = "alertmanager-smtp";
+                      require_tls = true;
                     }
                   ];
                 }
