@@ -66,6 +66,42 @@
               };
             };
           };
+          additionalPrometheusRulesMap = {
+            custom-alerts = {
+              groups = [
+                {
+                  name = "custom_rules";
+                  rules = [
+                    {
+                      alert = "HighCPUUsage";
+                      expr = ''100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80'';
+                      for = "5m";
+                      labels = {
+                        severity = "warning";
+                      };
+                      annotations = {
+                        summary = "High CPU usage detected";
+                        description = "CPU usage is above 80% for more than 5 minutes on {{ $labels.instance }}";
+                      };
+                    }
+                    {
+                      alert = "HighMemoryUsage";
+                      expr = "100 * (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) > 80";
+                      for = "5m";
+                      labels = {
+                        severity = "warning";
+                      };
+                      annotations = {
+                        summary = "High memory usage detected";
+                        description = "Memory usage is above 80% on {{ $labels.instance }}";
+                      };
+                    }
+                  ];
+                }
+              ];
+            };
+          };
+
           grafana.enabled = false;
           prometheus.ingress = {
             enabled = true;
