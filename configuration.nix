@@ -12,7 +12,7 @@
 
   environment.systemPackages = map lib.lowPrio [
     pkgs.neovim
-    pkgs.k9s
+    pkgs.stress
   ];
 
   # swapDevices = [
