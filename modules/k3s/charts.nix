@@ -65,6 +65,25 @@
                 limits.memory = "100Mi";
               };
             };
+
+            config = {
+              route.receiver = "email-notifications";
+              receiver = [
+                { name = "null"; }
+                {
+                  name = "email-notifications";
+                  email_configs = [
+                    {
+                      to = "amankumar010604@gmail.com";
+                      smarthost = "smtp.gmail.com:587";
+                      from = "amankumar010604@gmail.com";
+                      auth_username = "amankumar010604@gmail.com";
+                      auth_password_from_secret = "alertmanager-smtp";
+                    }
+                  ];
+                }
+              ];
+            };
           };
           additionalPrometheusRulesMap = {
             custom-alerts = {
