@@ -51,11 +51,19 @@
               limits.memory = "512Mi";
             };
           };
-          alertmanager.alertmanagerSpec = {
-            retention = "12h";
-            resources = {
-              requests.memory = "50Mi";
-              limits.memory = "100Mi";
+          alertmanager = {
+            ingress = {
+              enabled = true;
+              ingressClassName = "traefik";
+              hosts = [ "alertmanager.tech1savvy.me" ];
+            };
+
+            alertmanagerSpec = {
+              retention = "12h";
+              resources = {
+                requests.memory = "50Mi";
+                limits.memory = "100Mi";
+              };
             };
           };
           grafana.enabled = false;
