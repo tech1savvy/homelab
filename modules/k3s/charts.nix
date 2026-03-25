@@ -134,7 +134,15 @@
             };
           };
 
-          grafana.enabled = false;
+          grafana = {
+            enabled = true;
+            ingress = {
+              enabled = true;
+              ingressClassName = "traefik";
+              hosts = [ "grafana.tech1savvy.me" ];
+            };
+          };
+
           prometheus.ingress = {
             enabled = true;
             ingressClassName = "traefik";
