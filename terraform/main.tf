@@ -51,7 +51,7 @@ module "node_sg" {
 
 module "nixos_node" {
   source                 = "./modules/aws/nixos-node"
-  instance_type          = "t4g.medium"
+  instance_type          = "t4g.small"
   vpc_id                 = module.network.vpc_id
   subnet_id              = module.network.public_subnet_id
   vpc_security_group_ids = [module.node_sg.security_group_id]
