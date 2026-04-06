@@ -17,7 +17,7 @@
     {
       nixosConfigurations = {
         lab = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
+          system = "x86_64-linux";
           modules = [
             ./hosts/aws.nix
             ./configuration.nix
@@ -35,7 +35,7 @@
           profiles.system = {
             user = "root";
             sshUser = "root";
-            path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.lab;
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.lab;
           };
 
           remoteBuild = false;
