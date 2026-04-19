@@ -24,7 +24,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
-          role-to-assume: arn:aws:iam::461278471397:role/github-terraform-deploy
+          role-to-assume: arn:aws:iam::570934197885:role/terraform-homelab
           aws-region: ap-south-1
 
       - name: Checkout repository

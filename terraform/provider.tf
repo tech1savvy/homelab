@@ -37,7 +37,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket       = "tech1savvy-terraform-state"
+    bucket       = "tech1savvy-tf-state"
     key          = "lab/terraform.tfstate"
     region       = "ap-south-1"
     use_lockfile = true
